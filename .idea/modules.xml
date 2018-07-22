@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/jokejava/jokejava.iml" filepath="$PROJECT_DIR$/jokejava/jokejava.iml" />
       <module fileurl="file://$PROJECT_DIR$/jokesandroid/jokesandroid.iml" filepath="$PROJECT_DIR$/jokesandroid/jokesandroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jokesjava/jokesjava.iml" filepath="$PROJECT_DIR$/jokesjava/jokesjava.iml" />
       <module fileurl="file://$PROJECT_DIR$/joksjava/joksjava.iml" filepath="$PROJECT_DIR$/joksjava/joksjava.iml" />
     </modules>
   </component>
