@@ -13,11 +13,13 @@ import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
+import java.util.concurrent.CountDownLatch;
 
 public class MyEndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     private static MyApi myApiService = null;
     @SuppressLint("StaticFieldLeak")
     private Context context;
+    final CountDownLatch signal = new CountDownLatch(1);
 
     @Override
     protected String doInBackground(Context...params) {
@@ -34,18 +36,20 @@ public class MyEndpointsAsyncTask extends AsyncTask<Context, Void, String> {
                             abstractGoogleClientRequest.setDisableGZipContent(true);
                         }
                     });
+
             // end options for devappserver
 
             myApiService = builder.build();
         }
 
         context = params[0];
-
+        String joke = null;
         try {
-            return myApiService.tellJoke().execute().getData();
+            joke = myApiService.tellJoke().execute().getData();
         } catch (IOException e) {
-            return e.getMessage();
+            e.printStackTrace();
         }
+        return joke;
     }
 
     @Override
@@ -54,5 +58,6 @@ public class MyEndpointsAsyncTask extends AsyncTask<Context, Void, String> {
         intent.putExtra("ahmed",result);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+        signal.countDown();
     }
 }

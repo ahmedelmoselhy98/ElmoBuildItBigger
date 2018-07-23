@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
@@ -33,13 +34,15 @@ public class EndpointsAsyncTaskTestUnit extends AndroidTestCase {
         mTest.execute(InstrumentationRegistry.getTargetContext());
         String joke = mTest.get(10, TimeUnit.SECONDS);
         Assert.assertTrue(!joke.equals(""));
-    }
 
+
+    }
     @Test
     public void testVerifyResponse() {
         onView(withId(R.id.button)).perform(click());
         onView(withId(R.id.tv_joke)).check(matches(isDisplayed()));
     }
+
 
 }
 
